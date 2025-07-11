@@ -1,0 +1,9 @@
+{
+  "name": "billabot-mcp-plugin",
+  "description": "BillaBot MCP Plugin for JIRA + Tempo Team Analysis",
+  "command": "node",
+  "args": ["index.js"],
+  "env": {
+    "BACKEND_URL": "http://localhost:3001"
+  }
+}
