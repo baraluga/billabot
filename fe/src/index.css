@@ -20,8 +20,8 @@
   }
   
   body {
-    background-color: #f9fafb;
-    color: #111827;
+    background-color: #f1f5f9;
+    color: #1e293b;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -31,10 +31,13 @@
   .btn-primary {
     background-color: var(--color-primary-500);
     color: white;
-    font-weight: 500;
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
-    transition: background-color 0.2s;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    transition: all 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.875rem;
   }
   
   .btn-primary:hover {
@@ -42,38 +45,47 @@
   }
   
   .btn-secondary {
-    background-color: #e5e7eb;
-    color: #374151;
-    font-weight: 500;
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
-    transition: background-color 0.2s;
+    background-color: #f1f5f9;
+    color: #475569;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border: 1px solid #cbd5e1;
+    transition: all 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.875rem;
   }
   
   .btn-secondary:hover {
-    background-color: #d1d5db;
+    background-color: #e2e8f0;
+    border-color: #94a3b8;
   }
   
   .card {
     background-color: white;
-    border-radius: 0.75rem;
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
-    border: 1px solid #e5e7eb;
-    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+    padding: 2rem;
+  }
+  
+  .card-elevated {
+    background-color: #f8fafc;
+    border: 1px solid #cbd5e1;
+    padding: 2rem;
   }
   
   .input-field {
     display: block;
     width: 100%;
-    padding: 0.5rem 0.75rem;
-    border: 1px solid #d1d5db;
-    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid #cbd5e1;
     outline: none;
-    transition: border-color 0.2s, box-shadow 0.2s;
+    transition: all 0.2s;
+    font-size: 0.875rem;
+    background-color: #f8fafc;
   }
   
   .input-field:focus {
     border-color: var(--color-primary-500);
-    box-shadow: 0 0 0 2px rgba(0, 122, 205, 0.1);
+    background-color: white;
   }
 }

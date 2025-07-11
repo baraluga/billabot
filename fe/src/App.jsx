@@ -83,22 +83,22 @@ const App = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-slate-100">
       {/* Header */}
-      <header className="bg-white shadow-sm border-b">
+      <header className="bg-white border-b-2 border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center">
+            <div className="flex items-center gap-4">
+              <div className="w-8 h-8 bg-primary-600 flex items-center justify-center">
                 <Zap className="w-5 h-5 text-white" />
               </div>
-              <h1 className="text-xl font-semibold text-gray-900">BillaBot</h1>
-              <span className="text-sm text-gray-500">Team Analytics</span>
+              <h1 className="text-2xl font-bold text-slate-900 tracking-tight">BillaBot</h1>
+              <span className="text-sm font-medium text-slate-500 uppercase tracking-wide">Team Analytics</span>
             </div>
             
             <div className="flex items-center gap-4">
               <div className="flex items-center gap-2">
-                <label htmlFor="days" className="text-sm font-medium text-gray-700">
+                <label htmlFor="days" className="text-sm font-semibold text-slate-700 uppercase tracking-wide">
                   Days:
                 </label>
                 <select
@@ -149,15 +149,15 @@ const App = () => {
 
         {/* Navigation Tabs */}
         <div className="mb-6">
-          <nav className="flex space-x-8">
+          <nav className="flex space-x-8 border-b border-slate-200">
             {tabs.map(({ id, label, icon: Icon }) => (
               <button
                 key={id}
                 onClick={() => setActiveTab(id)}
-                className={`flex items-center gap-2 py-2 px-1 border-b-2 font-medium text-sm ${
+                className={`flex items-center gap-2 py-3 px-1 border-b-2 font-semibold text-sm uppercase tracking-wide transition-colors ${
                   activeTab === id
                     ? 'border-primary-500 text-primary-600'
-                    : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                    : 'border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300'
                 }`}
               >
                 <Icon className="w-4 h-4" />

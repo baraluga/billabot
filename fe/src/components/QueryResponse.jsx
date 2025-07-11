@@ -97,29 +97,29 @@ const QueryResponse = ({ response, isLoading = false }) => {
 
   return (
     <div className="card">
-      <div className="flex items-start gap-3 mb-4">
-        <div className="w-8 h-8 bg-primary-100 rounded-full flex items-center justify-center flex-shrink-0">
-          <TypeIcon className={`w-4 h-4 ${typeColor}`} />
+      <div className="flex items-start gap-4 mb-6 pb-4 border-b border-slate-200">
+        <div className="w-10 h-10 bg-slate-100 flex items-center justify-center flex-shrink-0">
+          <TypeIcon className={`w-5 h-5 ${typeColor}`} />
         </div>
         <div className="flex-1">
-          <h3 className="font-medium mb-1">Response to: "{query}"</h3>
-          <p className="text-sm text-gray-600 capitalize">{type.replace('_', ' ')} Analysis</p>
+          <h3 className="font-bold text-lg text-slate-900 mb-1">Response to: "{query}"</h3>
+          <p className="text-sm text-slate-600 uppercase tracking-wide font-semibold">{type.replace('_', ' ')} Analysis</p>
         </div>
       </div>
 
-      <div className="mb-4">
-        <h4 className="font-medium mb-2">Summary</h4>
-        <p className="text-gray-700">{summary}</p>
+      <div className="mb-6">
+        <h4 className="font-bold text-slate-900 mb-3 uppercase tracking-wide">Summary</h4>
+        <p className="text-slate-700 leading-relaxed">{summary}</p>
       </div>
 
       {/* Member-focused results for availability and billability */}
       {data?.userAnalysis && (type === 'availability' || type === 'billability') && (
         <div className="mb-4">
-          <div className="flex items-center justify-between mb-3">
-            <h4 className="font-medium">
+          <div className="flex items-center justify-between mb-4 pb-2 border-b border-slate-200">
+            <h4 className="font-bold text-slate-900 uppercase tracking-wide">
               {type === 'availability' ? 'Team Availability' : 'Team Billability'}
             </h4>
-            <div className="text-sm text-gray-500">
+            <div className="text-sm text-slate-500 font-semibold uppercase tracking-wide">
               {Object.values(data.userAnalysis).length} members
             </div>
           </div>

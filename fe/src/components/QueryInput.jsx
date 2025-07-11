@@ -19,7 +19,7 @@ const QueryInput = ({ onSubmit, isLoading = false }) => {
 
   return (
     <div className="card">
-      <h2 className="text-xl font-semibold mb-4">Ask about your team</h2>
+      <h2 className="text-2xl font-bold text-slate-900 mb-6 uppercase tracking-wide">Ask about your team</h2>
       
       <form onSubmit={handleSubmit} className="mb-4">
         <div className="flex gap-2">
@@ -46,19 +46,19 @@ const QueryInput = ({ onSubmit, isLoading = false }) => {
         </div>
       </form>
 
-      <div className="text-sm text-gray-600">
-        <p className="mb-3 font-medium">Template Questions:</p>
-        <div className="space-y-2">
+      <div className="text-sm text-slate-600">
+        <p className="mb-4 font-bold text-slate-900 uppercase tracking-wide">Template Questions:</p>
+        <div className="space-y-1">
           {templateQuestions.map((question, index) => (
             <button
               key={index}
               onClick={() => setQuery(question)}
-              className="w-full text-left px-4 py-3 bg-gray-50 hover:bg-gray-100 rounded-lg transition-colors border border-gray-200 hover:border-gray-300"
+              className="w-full text-left px-4 py-4 bg-slate-50 hover:bg-slate-100 transition-colors border border-slate-200 hover:border-primary-500"
               disabled={isLoading}
             >
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-primary-500 rounded-full"></div>
-                <span className="text-sm font-medium">{question}</span>
+              <div className="flex items-center gap-3">
+                <div className="w-3 h-3 bg-primary-500"></div>
+                <span className="text-sm font-semibold text-slate-900">{question}</span>
               </div>
             </button>
           ))}
