@@ -1,15 +1,45 @@
 import { MessageSquare, TrendingUp, Users, Clock, DollarSign } from 'lucide-react';
 import { formatPercentage, formatHours } from '../lib/utils';
 
-const InsightCard = ({ icon: Icon, title, value, color = 'text-gray-600' }) => (
-  <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
-    <Icon className={`w-5 h-5 ${color}`} />
-    <div>
-      <p className="text-sm font-medium">{title}</p>
-      <p className="text-xs text-gray-600">{value}</p>
+const MemberCard = ({ member, type }) => {
+  const userInfo = member.userInfo || {};
+  const displayName = userInfo.displayName || `User (${userInfo.accountId?.substring(0, 8) || 'Unknown'})`;
+  const emailAddress = userInfo.emailAddress || '';
+  
+  return (
+    <div className="flex items-center justify-between p-3 bg-white rounded-lg border border-gray-100 hover:shadow-sm transition-shadow">
+      <div className="flex items-center gap-3">
+        <div className="w-8 h-8 bg-primary-100 rounded-full flex items-center justify-center">
+          <span className="text-sm font-medium text-primary-600">
+            {displayName.charAt(0).toUpperCase()}
+          </span>
+        </div>
+        <div>
+          <p className="text-sm font-medium">{displayName}</p>
+          <p className="text-xs text-gray-600">{emailAddress}</p>
+        </div>
+      </div>
+      <div className="text-right">
+        {type === 'availability' && (
+          <>
+            <p className="text-sm font-semibold text-blue-600">
+              {formatHours(member.availability?.totalPlannedHours || 0)}
+            </p>
+            <p className="text-xs text-gray-600">planned hours</p>
+          </>
+        )}
+        {type === 'billability' && (
+          <>
+            <p className="text-sm font-semibold text-green-600">
+              {formatPercentage(member.billability?.billablePercentage || 0)}
+            </p>
+            <p className="text-xs text-gray-600">billable rate</p>
+          </>
+        )}
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 const QueryResponse = ({ response, isLoading = false }) => {
   if (isLoading) {
@@ -82,18 +112,49 @@ const QueryResponse = ({ response, isLoading = false }) => {
         <p className="text-gray-700">{summary}</p>
       </div>
 
-      {insights && insights.length > 0 && (
+      {/* Member-focused results for availability and billability */}
+      {data?.userAnalysis && (type === 'availability' || type === 'billability') && (
+        <div className="mb-4">
+          <div className="flex items-center justify-between mb-3">
+            <h4 className="font-medium">
+              {type === 'availability' ? 'Team Availability' : 'Team Billability'}
+            </h4>
+            <div className="text-sm text-gray-500">
+              {Object.values(data.userAnalysis).length} members
+            </div>
+          </div>
+          <div className="relative">
+            <div className="space-y-2 max-h-64 overflow-y-auto border border-gray-200 rounded-lg p-3 bg-gray-50">
+              {Object.values(data.userAnalysis).map((member, index) => (
+                <MemberCard
+                  key={member.userInfo?.accountId || index}
+                  member={member}
+                  type={type}
+                />
+              ))}
+            </div>
+            {/* Scroll indicator */}
+            <div className="absolute bottom-0 left-0 right-0 h-4 bg-gradient-to-t from-gray-50 to-transparent pointer-events-none opacity-75"></div>
+            <div className="absolute top-0 right-2 text-xs text-gray-400 bg-white px-2 py-1 rounded-b-md shadow-sm">
+              ↕ Scroll for more
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Generic insights for other query types */}
+      {insights && insights.length > 0 && type !== 'availability' && type !== 'billability' && (
         <div className="mb-4">
           <h4 className="font-medium mb-3">Key Insights</h4>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
             {insights.map((insight, index) => (
-              <InsightCard
-                key={index}
-                icon={TrendingUp}
-                title={insight.split(':')[0]}
-                value={insight.split(':')[1] || insight}
-                color={typeColor}
-              />
+              <div key={index} className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                <TrendingUp className={`w-5 h-5 ${typeColor}`} />
+                <div>
+                  <p className="text-sm font-medium">{insight.split(':')[0]}</p>
+                  <p className="text-xs text-gray-600">{insight.split(':')[1] || insight}</p>
+                </div>
+              </div>
             ))}
           </div>
         </div>

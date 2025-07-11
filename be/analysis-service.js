@@ -181,7 +181,7 @@ class AnalysisService {
     const analysis = await this.getEnhancedTeamAnalysis(days);
     
     // Generate response based on query intent
-    if (lowerQuery.includes('availability') || lowerQuery.includes('capacity')) {
+    if (lowerQuery.includes('available') || lowerQuery.includes('availability') || lowerQuery.includes('capacity')) {
       return this.generateAvailabilityResponse(analysis, query);
     } else if (lowerQuery.includes('billability') || lowerQuery.includes('billable')) {
       return this.generateBillabilityResponse(analysis, query);

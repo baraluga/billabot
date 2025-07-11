@@ -12,12 +12,9 @@ const QueryInput = ({ onSubmit, isLoading = false }) => {
     }
   };
 
-  const placeholderQueries = [
-    "How is our team doing this week?",
-    "Who has the highest billability?",
-    "What's our capacity utilization?",
-    "Show me users who need attention",
-    "Analyze our team for the last 30 days"
+  const templateQuestions = [
+    "Who's available this week?",
+    "How billable is our team?"
   ];
 
   return (
@@ -50,16 +47,19 @@ const QueryInput = ({ onSubmit, isLoading = false }) => {
       </form>
 
       <div className="text-sm text-gray-600">
-        <p className="mb-2">Try asking:</p>
-        <div className="flex flex-wrap gap-2">
-          {placeholderQueries.map((placeholder, index) => (
+        <p className="mb-3 font-medium">Template Questions:</p>
+        <div className="space-y-2">
+          {templateQuestions.map((question, index) => (
             <button
               key={index}
-              onClick={() => setQuery(placeholder)}
-              className="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-xs transition-colors"
+              onClick={() => setQuery(question)}
+              className="w-full text-left px-4 py-3 bg-gray-50 hover:bg-gray-100 rounded-lg transition-colors border border-gray-200 hover:border-gray-300"
               disabled={isLoading}
             >
-              {placeholder}
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-primary-500 rounded-full"></div>
+                <span className="text-sm font-medium">{question}</span>
+              </div>
             </button>
           ))}
         </div>
