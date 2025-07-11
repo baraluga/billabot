@@ -74,6 +74,9 @@ Structured JSON Output + Summary
 	•	✅ /search?jql=...
 	•	✅ /issue/{issueKey}/worklog
 	•	🔄 Create jiraClient.ts to encapsulate fetch logic (deferred - using direct API calls for now)
+	•	⏳ MISSING: Create JIRA integration in backend API
+	•	⏳ MISSING: Add JIRA endpoints to Express server (/api/jira/users, /api/jira/projects, etc.)
+	•	⏳ MISSING: Combine JIRA user data with Tempo data for complete user profiles
 
 ⸻
 
@@ -91,21 +94,49 @@ Structured JSON Output + Summary
 ⸻
 
 🧱 Epic 3: MCP Plugin Development
-	•	⏳ Define MCP function manifest
+	•	⏳ Define MCP function manifest (tools/functions JSON schema)
 	•	Inputs: team/user, date range, filters
 	•	Outputs: availability %, billable %, per-user breakdown
+	•	⏳ Implement MCP server setup and configuration
+	•	⏳ Create MCP tool handlers that call backend API endpoints
 	•	⏳ Implement handler logic to:
 	•	Fetch JIRA user + project context
 	•	Query Tempo plans + worklogs
 	•	Calculate and format summaries
 	•	⏳ Add error handling and edge case support
+	•	⏳ MISSING: Create package.json for MCP plugin
+	•	⏳ MISSING: Test MCP plugin with Claude Desktop or MCP client
+	•	⏳ MISSING: Add natural language query parsing for flexibility
 
 ⸻
 
 🧱 Epic 4: Frontend
+	•	⏳ Set up frontend project structure in ./fe
+	•	⏳ Choose framework (React/Angular/Vue) and initialize
 	•	⏳ Simple UI to:
 	•	Accept natural language query
 	•	Display markdown/table/chart output
+	•	⏳ MISSING: Create API client to communicate with backend
+	•	⏳ MISSING: Add date range picker for custom analysis periods
+	•	⏳ MISSING: Create data visualization components (charts, tables)
+	•	⏳ MISSING: Add user filtering and search capabilities
+	•	⏳ MISSING: Implement real-time data refresh functionality
+	•	⏳ MISSING: Add export functionality (CSV, PDF, etc.)
+	•	⏳ MISSING: Responsive design for mobile/tablet access
+
+⸻
+
+🧱 Epic 5: Deployment & Documentation
+	•	⏳ MISSING: Create comprehensive README.md with setup instructions
+	•	⏳ MISSING: Add environment configuration documentation
+	•	⏳ MISSING: Create API documentation (OpenAPI/Swagger)
+	•	⏳ MISSING: Add Docker containerization for easy deployment
+	•	⏳ MISSING: Create docker-compose.yml for full stack
+	•	⏳ MISSING: Add CI/CD pipeline configuration
+	•	⏳ MISSING: Create deployment scripts and guides
+	•	⏳ MISSING: Add security best practices documentation
+	•	⏳ MISSING: Create user manual and troubleshooting guide
+	•	⏳ MISSING: Add monitoring and logging setup
 
 ⸻
 
