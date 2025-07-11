@@ -1,0 +1,24 @@
+{
+  "name": "billabot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "test-tempo-api.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/baraluga/billabot.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/baraluga/billabot/issues"
+  },
+  "homepage": "https://github.com/baraluga/billabot#readme",
+  "dependencies": {
+    "dotenv": "^17.2.0"
+  }
+}
