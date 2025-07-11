@@ -1,4 +1,4 @@
-Here’s a detailed summary of your JIRA + Tempo + MCP Integration side project based on everything so far:
+Here's a detailed summary of your JIRA + Tempo + MCP Integration side project based on everything so far:
 
 ⸻
 
@@ -27,7 +27,7 @@ Based on Tempo Planner data:
 
 Based on Tempo Timesheets data:
 
-	•	What % of a member’s logged time is billable?
+	•	What % of a member's logged time is billable?
 	•	Are members spending time on internal or client work?
 
 The result should be structured JSON (for MCP/automation) and/or text/markdown summaries (for user-facing feedback or Slack replies).
@@ -35,7 +35,7 @@ The result should be structured JSON (for MCP/automation) and/or text/markdown s
 ⸻
 
 🛠️ Technology Stack
-	•	Backend: Node.js + TypeScript
+	•	Backend: Node.js + Express.js (REST API Server)
 	•	Plugin Interface: MCP function manifest + handler
 	•	APIs:
 	•	JIRA REST API (/users, /projects, /search, /worklog)
@@ -44,6 +44,7 @@ The result should be structured JSON (for MCP/automation) and/or text/markdown s
 	•	Auth:
 	•	JIRA: Email + API Token (Basic Auth)
 	•	Tempo: OAuth 2.0 (Client Credentials Flow)
+	•	Project Structure: ./be (backend API) + ./fe (frontend)
 
 ⸻
 
@@ -64,25 +65,28 @@ Structured JSON Output + Summary
 
 🧱 Tasks and Milestones (Scrum Format)
 
-🧱 Epic 1: JIRA API Integration
-	•	Verify JIRA REST API access using Basic Auth
-	•	Test endpoints:
-	•	/myself
-	•	/users/search
-	•	/project/search
-	•	/search?jql=...
-	•	/issue/{issueKey}/worklog
-	•	 Create jiraClient.ts to encapsulate fetch logic
+✅ Epic 1: JIRA API Integration - COMPLETED
+	•	✅ Verify JIRA REST API access using Basic Auth
+	•	✅ Test endpoints:
+	•	✅ /myself
+	•	✅ /users/search
+	•	✅ /project/search
+	•	✅ /search?jql=...
+	•	✅ /issue/{issueKey}/worklog
+	•	🔄 Create jiraClient.ts to encapsulate fetch logic (deferred - using direct API calls for now)
 
 ⸻
 
-🧱 Epic 2: Tempo API Integration
-	• Register OAuth 2.0 App on https://app.tempo.io/settings/api-integration
-	•	Generate access token via client_credentials grant
-	•	⏳ Test endpoints:
-	•	/plans – to determine availability
-	•	/worklogs/user/{id} – to determine billability
-	•	/users – to match accountId ↔ name
+✅ Epic 2: Tempo API Integration - COMPLETED
+	• ✅ Register OAuth 2.0 App on https://app.tempo.io/settings/api-integration
+	•	✅ Generate access token via client_credentials grant
+	•	✅ Test endpoints:
+	•	✅ /plans – to determine availability (50 plans retrieved)
+	•	✅ /worklogs – to determine billability (42 worklogs retrieved)
+	•	⚠️ /users – limited access (using accountId from worklogs/plans instead)
+	•	✅ BONUS: Created TempoClient class with team analysis
+	•	✅ BONUS: Built Express.js REST API server with endpoints:
+	•	✅ /api/availability, /api/billability, /api/team-analysis
 
 ⸻
 
@@ -103,3 +107,7 @@ Structured JSON Output + Summary
 	•	Accept natural language query
 	•	Display markdown/table/chart output
 
+⸻
+
+🔍 Development Notes
+	• If I approve any of your change, double check in CLAUDE.md to see if we've done any task to cross out
